@@ -3,30 +3,24 @@ using namespace std;
 int option = -1;
 void practika_3_1()
 {
-	int n = 20;
-	int a[20];
+	int n = 10;
+	int a[10] = {2,3,6,3,1,-64,6,-754,10,56 };
 	int count = 1;
 	int max = -1;
 	int i = 0;
-	int r, range_min, range_max, key;
-	range_min = 2;
-	range_max = 412;
-	for  (i = 0; i < n; i++)
-	{
-		a[i] = ((double)rand() / RAND_MAX) * (range_max - range_min) + range_min;
-		cout << a[i] << " ";
-	}
-	cout << endl;
+	int tmp;
+
+	cout << "Условие: Дан массив целых чисел.Отсортировать его сортировкой вставками"<< endl;
 	for (int j = 1; j < n; j++)
 	{
-		key = a[j];
-		int i = j - 1;
-		while (i >= 0 && a[i] > key)
+		tmp = a[j];
+		i = j - 1;
+		while (i >= 0 && a[i] > tmp)
 		{
 			a[i + 1] = a[i];
 			i--;
 		}
-		a[i + 1] = key;
+		a[i + 1] = tmp;
 	}
 	for (int i = 0; i < n; i++)
 	{
@@ -36,11 +30,61 @@ void practika_3_1()
 }
 void practika_3_2()
 {
+	cout << "Условие: Дан массив целых чисел. Отсортировать его сортировкой выбором." << endl;
+	const int n = 10;
+	int tmp, min_index;
+	int arr[10] = { 5, 2, 4, 6, 0, 1, 3 ,-11,-128,943};
 
+	for (int i = 0; i < n; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+
+	for (int i = 0; i < n - 1; i++)
+	{
+		min_index = i;
+		for (int j = i + 1; j < n; j++)
+		{
+			if (arr[j] < arr[min_index])
+			{
+				min_index = j;
+			}
+		}
+		tmp = arr[min_index];
+		arr[min_index] = arr[i];
+		arr[i] = tmp;
+	}
+
+	for (int i = 0; i < n; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
 }
 void practika_3_3()
 {
-
+	cout << "Условие: Дан массив целых чисел. Отсортировать его сортировкой простыми обменами (пузырьком)." << endl;
+	const int n = 10;
+	int tmp;
+	int arr[10] = { 5,21,34,-30, 2, 4, 6, 0, 1, 3 };
+	for (int i = 0; i < n - 1; i++)
+	{
+		for (int j = 0; j < n - 1 - i; j++)
+		{
+			if (arr[j] > arr[j + 1])
+			{
+				tmp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = tmp;
+			}
+		}
+	}
+	for (int i = 0; i < n; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
 }
 void practika_3_4()
 {
